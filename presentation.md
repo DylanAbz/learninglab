@@ -82,6 +82,18 @@ Comment Solr passe-t-il d'une phrase à un Index Inversé propre ? Grâce au pip
 
 ---
 
+# L'algorithme de Pertinence : Le cerveau de Solr 🧠
+
+Pourquoi le film A sort en 1er et le film B en 2ème ? Grâce à l'algorithme **BM25** (l'évolution du célèbre TF-IDF). 
+
+Il repose sur deux piliers :
+* 📈 **TF (Term Frequency) :** Plus le mot cherché est répété dans le document, plus le score monte.
+* 💎 **IDF (Inverse Document Frequency) :** Plus le mot cherché est *rare* dans la base de données globale, plus il a de la valeur. 
+
+*Exemple :* Trouver le mot "ordinateur" rapporte beaucoup de points, trouver le mot "le" ne rapporte rien.
+
+---
+
 # Cas concret : Pourquoi Vinted ou Leboncoin en ont besoin ? 🛒
 
 Imaginez un utilisateur qui tape **"chemiseee"** (avec une faute) sur un site e-commerce.
@@ -89,7 +101,7 @@ Imaginez un utilisateur qui tape **"chemiseee"** (avec une faute) sur un site e-
 * **Avec du SQL classique :** 0 résultat. L'utilisateur part, l'entreprise perd une vente.
 * **Avec Solr :** L'algorithme analyse phonétiquement et textuellement, comprend l'intention ("chemise"), et affiche les bons produits. 
 
-C'est ce qu'on appelle la rentabilité par la recherche !
+C'est la rentabilité par la recherche !
 
 ---
 
@@ -106,7 +118,7 @@ C'est ce qu'on appelle la rentabilité par la recherche !
 
 # L'Architecture : Où place-t-on Solr ? 🏗️
 
-Solr ne remplace pas votre base de données principale (MySQL, PostgreSQL...). Il travaille avec !
+Solr ne remplace pas la base de données (MySQL, PostgreSQL...). 
 
 1. **Ajout d'un produit :** Le site web sauvegarde le produit dans la BDD SQL (pour la sécurité) ET l'envoie à Solr (pour l'indexer).
 2. **Recherche client :** Quand un client utilise la barre de recherche, le site n'interroge plus la BDD SQL, il demande directement à Solr.
@@ -114,9 +126,39 @@ Solr ne remplace pas votre base de données principale (MySQL, PostgreSQL...). I
 
 ---
 
-# 📚 Le lexique de survie (Avant le TP)
+# Sous le capot : Qu'est-ce qu'un "Core" ? ⚙️
 
-Oubliez le vocabulaire SQL pour les 20 prochaines minutes !
+On l'utilisera dans le TP. Un **Core** n'est pas juste une boîte vide. C'est une instance de recherche indépendante qui contient :
+
+1. **L'index physique :** Les données elles-mêmes (le dictionnaire inversé sur le disque dur).
+2. **Le fichier `schema.xml` :** Le plan de construction. Il dit à Solr : *"Le champ 'titre' est du texte, le champ 'annee' est un entier"*.
+3. **Le fichier `solrconfig.xml` :** Le cerveau technique (gestion du cache, de la mémoire RAM, et des plugins).
+
+---
+
+# Comment l'utiliser dans notre code ? 💻
+
+Pas besoin d'être un expert en infrastructure pour parler à Solr. C'est une simple **API REST**. On lui envoie une requête HTTP, il répond en JSON.
+
+* ☕ **En Java :** On utilise la librairie officielle **SolrJ** (très utilisée en milieu bancaire/assurance).
+* 🐍 **En Python :** On utilise **PySolr**.
+* 🐘 **En PHP :** On utilise **Solarium**.
+* 🌐 **En JavaScript :** Un simple `fetch()` ou `axios.get()` suffit pour récupérer les résultats et les afficher sur un site web.
+
+---
+
+# Le grand match : Solr face à la concurrence 🥊
+
+Pourquoi choisir Solr en 2026 ?
+
+* 🟠 **Elasticsearch :** Le faux jumeau (basé sur Lucene aussi). Il domine le marché, mais il est surtout utilisé pour analyser des montagnes de logs serveurs (la stack ELK).
+* 🔴 **Apache Solr :** Le vétéran. Reste le roi incontesté de la **recherche textuelle complexe** et de l'analyse de gros documents (PDF, Word).
+* 🟣 **Meilisearch / Typesense :** Les challengers modernes. Plus légers, ils gèrent les fautes de frappe sans aucune configuration. Parfaits pour les petits sites e-commerce.
+
+---
+
+# 📚 Le lexique (Avant le TP)
+
 
 | Base de données (SQL) | Apache Solr |
 | :--- | :--- |
@@ -126,12 +168,16 @@ Oubliez le vocabulaire SQL pour les 20 prochaines minutes !
 
 ---
 
-# À vous de jouer ! 💻
+# À vous de jouer ! 💻 (TP - 20 min)
 
-Objectif du TP (20 min) :
-1. Démarrer notre instance Solr
-2. Créer notre premier "Core"
-3. Injecter un catalogue de films au format JSON
-4. Faire notre première recherche via l'interface d'administration
+**Pour créer son propre moteur :**
 
-**Préparez vos terminaux !**
+1. **Démarrer le serveur** Solr via Docker.
+2. **Injecter le catalogue** de films complet (JSON).
+3. **Visiter l'usine (Analysis) :** Observer le découpage de vos mots en direct !
+4. **Recherches Avancées :**
+   * Trouver un film en faisant des fautes de frappe (*Fuzzy Search*).
+   * Filtrer par réalisateur et année (*Facettes*).
+   * Activer le surlignage des mots-clés (*Highlighting*).
+
+* Bonus pour les rapides : supprimer un film via l'API

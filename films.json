@@ -1,0 +1,14 @@
+[
+  {"id": "1", "titre": "Inception", "realisateur": "Christopher Nolan", "annee": 2010, "genre": "Sci-Fi", "description": "Un voleur s'approprie les secrets de l'inconscient pendant le rêve."},
+  {"id": "2", "titre": "The Matrix", "realisateur": "Lana Wachowski, Lilly Wachowski", "annee": 1999, "genre": "Sci-Fi", "description": "Un pirate informatique découvre que la réalité n'est qu'une simulation."},
+  {"id": "3", "titre": "Le Seigneur des Anneaux", "realisateur": "Peter Jackson", "annee": 2001, "genre": "Fantasy", "description": "Un jeune Hobbit hérite d'un anneau mystérieux et dangereux."},
+  {"id": "4", "titre": "Interstellar", "realisateur": "Christopher Nolan", "annee": 2014, "genre": "Sci-Fi", "description": "Des explorateurs voyagent à travers un trou de ver dans l'espace."},
+  {"id": "5", "titre": "Jurassic Park", "realisateur": "Steven Spielberg", "annee": 1993, "genre": "Aventure", "description": "Un parc d'attractions avec des dinosaures clonés tourne au cauchemar."},
+  {"id": "6", "titre": "E.T. l'extra-terrestre", "realisateur": "Steven Spielberg", "annee": 1982, "genre": "Sci-Fi", "description": "Un garçon se lie d'amitié avec un extraterrestre perdu sur Terre."},
+  {"id": "7", "titre": "Avatar", "realisateur": "James Cameron", "annee": 2009, "genre": "Sci-Fi", "description": "Un marine paraplégique est envoyé sur la lune Pandora."},
+  {"id": "8", "titre": "Gladiator", "realisateur": "Ridley Scott", "annee": 2000, "genre": "Action", "description": "Un général romain trahi cherche à se venger en devenant gladiateur."},
+  {"id": "9", "titre": "Blade Runner", "realisateur": "Ridley Scott", "annee": 1982, "genre": "Sci-Fi", "description": "Un policier traque des androïdes rebelles dans un Los Angeles dystopique."},
+  {"id": "10", "titre": "Terminator 2", "realisateur": "James Cameron", "annee": 1991, "genre": "Action", "description": "Un cyborg est envoyé du futur pour protéger un adolescent."},
+  {"id": "11", "titre": "Le Hobbit", "realisateur": "Peter Jackson", "annee": 2012, "genre": "Fantasy", "description": "Bilbon Sacquet entame une quête épique pour reprendre le royaume d'Erebor."},
+  {"id": "12", "titre": "Dunkerque", "realisateur": "Christopher Nolan", "annee": 2017, "genre": "Guerre", "description": "L'évacuation des troupes alliées encerclées par l'armée allemande en 1940."}
+]
